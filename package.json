@@ -24,7 +24,8 @@
     "keymirror",
     "path",
     "nested",
-    "object"
+    "object",
+    "typescript"
   ],
   "author": "Ken Huang <kenhuang.au@gmail.com>",
   "license": "MIT",
