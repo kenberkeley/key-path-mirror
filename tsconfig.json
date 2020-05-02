@@ -1,4 +1,4 @@
-{
+{ // Refer to https://git.io/Jf38Z
   "include": ["./src"],
   "compilerOptions": {
     /* Basic Options */
