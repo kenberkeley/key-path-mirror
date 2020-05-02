@@ -1,0 +1,39 @@
+{
+  "name": "key-path-mirror",
+  "version": "1.0.0",
+  "description": "Similar to keymirror but supports nested objects, built with TypeScript",
+  "main": "dist/key-path-mirror.js",
+  "types": "dist/key-path-mirror.d.ts",
+  "scripts": {
+    "clean": "del dist",
+    "format": "prettier-standard --format --lint **/*",
+    "lint": "prettier-standard --check **/*",
+    "test": "jest",
+    "check-types": "tsc --noEmit",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "prepublish": "npm run lint && npm run check-types && npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenberkeley/key-path-mirror.git"
+  },
+  "keywords": [
+    "key",
+    "mirror",
+    "keymirror",
+    "path",
+    "nested",
+    "object"
+  ],
+  "author": "Ken Huang <kenhuang.au@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "del-cli": "^3.0.0",
+    "jest": "^25.5.3",
+    "prettier-standard": "^16.3.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  }
+}
