@@ -1,5 +1,13 @@
 # key-path-mirror
 
+<!-- Stolen from https://git.io/Jf34a -->
+<p align="center">
+  <a href="https://circleci.com/gh/kenberkeley/key-path-mirror/tree/master"><img src="https://img.shields.io/circleci/project/github/kenberkeley/key-path-mirror/master.svg?sanitize=true" alt="Build Status"></a>
+  <a href="https://npmjs.com/package/key-path-mirror"><img src="https://img.shields.io/npm/v/key-path-mirror.svg?sanitize=true" alt="Version"></a>
+  <a href="https://npmjs.com/package/key-path-mirror"><img src="https://img.shields.io/npm/l/key-path-mirror.svg?sanitize=true" alt="License"></a>
+  <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="JavaScript Style Guide"></a>
+</p>
+
 > Similar to [keymirror](https://www.npmjs.com/package/keymirror) but supports nested objects, built with TypeScript.
 
 ## § Installation
