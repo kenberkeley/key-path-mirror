@@ -2,7 +2,7 @@ import { keyPathMirror } from '../src/key-path-mirror'
 
 describe(keyPathMirror.name, () => {
   it('should throw if the argument is not an object', () => {
-    ;[undefined, null, true, 1, 'string', [], new Date(), () => {}].forEach(
+    ;[undefined, null, true, NaN, 1, 'hello', [], new Date(), new RegExp(''), () => {}].forEach(
       o => {
         expect(() => {
           keyPathMirror(
@@ -14,60 +14,40 @@ describe(keyPathMirror.name, () => {
     )
   })
 
-  it('should throw if any object value is not an object or string', () => {
-    expect(() => {
-      keyPathMirror({
-        // @ts-ignore
-        a: 1
-      })
-    }).toThrow('Unsupported type number in a')
-
-    expect(() => {
-      keyPathMirror({
-        a: '',
-        b: {
-          c: {
-            // @ts-ignore
-            d: true
-          },
-          e: ''
-        }
-      })
-    }).toThrow('Unsupported type boolean in b.c.d')
-  })
-
   it('should return key path mirrored object', () => {
     expect({}).toEqual({})
 
     expect(
       keyPathMirror({
-        a: '',
-        b: ''
+        a: 1,
+        b: () => {},
+        c: /hello/
       })
     ).toEqual({
       a: 'a',
-      b: 'b'
+      b: 'b',
+      c: 'c'
     })
 
     expect(
       keyPathMirror({
-        a: '',
+        a: 123,
         b: {
-          c: '',
+          c: 'hello',
           d: {
-            e: ''
+            e: 'world'
           }
         },
         f: {
           g: {
             h: {
-              i: ''
+              i: () => { console.log('hello world') }
             },
-            j: ''
+            j: 123
           },
-          k: ''
+          k: undefined
         },
-        l: ''
+        l: new Date()
       })
     ).toEqual({
       a: 'a',
