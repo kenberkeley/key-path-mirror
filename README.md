@@ -21,7 +21,7 @@ $ yarn add key-path-mirror
 ## § Usage
 
 ```ts
-import { keyPathMirror } from 'key-path-mirror'
+import keyPathMirror from 'key-path-mirror' // Or `import { keyPathMirror } from 'key-path-mirror'`
 
 const nestedObject = {
   a: 123,
