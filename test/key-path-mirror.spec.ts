@@ -2,16 +2,25 @@ import { keyPathMirror } from '../src/key-path-mirror'
 
 describe(keyPathMirror.name, () => {
   it('should throw if the argument is not an object', () => {
-    ;[undefined, null, true, NaN, 1, 'hello', [], new Date(), new RegExp(''), () => {}].forEach(
-      o => {
-        expect(() => {
-          keyPathMirror(
-            // @ts-ignore
-            o
-          )
-        }).toThrow('Argument must be an object')
-      }
-    )
+    ;[
+      undefined,
+      null,
+      true,
+      NaN,
+      1,
+      'hello',
+      [],
+      new Date(),
+      new RegExp(''),
+      () => {}
+    ].forEach(o => {
+      expect(() => {
+        keyPathMirror(
+          // @ts-ignore
+          o
+        )
+      }).toThrow('Argument must be an object')
+    })
   })
 
   it('should return key path mirrored object', () => {
@@ -41,7 +50,9 @@ describe(keyPathMirror.name, () => {
         f: {
           g: {
             h: {
-              i: () => { console.log('hello world') }
+              i: () => {
+                console.log('hello world')
+              }
             },
             j: 123
           },

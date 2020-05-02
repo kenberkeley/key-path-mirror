@@ -19,8 +19,10 @@ export function keyPathMirror<T extends Obj> (obj: T, prefixPath?: string): T {
 }
 
 function isObject (o: any) {
-  return Object.prototype.toString
-    .call(o)
-    .slice(8, -1)
-    .toLowerCase() === 'object'
+  return (
+    Object.prototype.toString
+      .call(o)
+      .slice(8, -1)
+      .toLowerCase() === 'object'
+  )
 }
