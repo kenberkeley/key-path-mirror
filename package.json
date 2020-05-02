@@ -1,6 +1,6 @@
 {
   "name": "key-path-mirror",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Similar to keymirror but supports nested objects, built with TypeScript",
   "main": "dist/key-path-mirror.js",
   "types": "dist/key-path-mirror.d.ts",
