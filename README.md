@@ -21,8 +21,18 @@ $ yarn add key-path-mirror
 ## § Usage
 
 ```ts
-import keyPathMirror from 'key-path-mirror' // Or `import { keyPathMirror } from 'key-path-mirror'`
+import keyPathMirror from 'key-path-mirror'
+// Or
+import { keyPathMirror } from 'key-path-mirror'
 
+keyPathMirror(obj: object, prefix?: string)
+```
+
+## § Examples
+
+> 👉 [REPL online example](https://repl.it/repls/BrightBothDevices)
+
+```ts
 const nestedObject = {
   a: 123,
   b: {
@@ -34,7 +44,7 @@ const nestedObject = {
   f: {
     g: {
       h: {
-        i: function () { console.log('hello world') }
+        i: () => { console.log('hello world') }
       },
       j: 123
     },
@@ -43,7 +53,7 @@ const nestedObject = {
   l: new Date()
 }
 
-const expectedKeyMirroredObject = {
+const expectedKeyPathMirroredObject = {
   a: 'a',
   b: {
     c: 'b.c',
@@ -65,9 +75,36 @@ const expectedKeyMirroredObject = {
 
 console.assert(
   JSON.stringify(keyPathMirror(nestedObject)) ===
-  JSON.stringify(expectedKeyMirroredObject)
-)
-// no errors :)
+  JSON.stringify(expectedKeyPathMirroredObject)
+) // no errors :)
+```
+
+```ts
+const prefix = 'foobar:'
+const nestedObject = {
+  a: 123,
+  b: {
+    c: 'hello',
+    d: {
+      e: null
+    }
+  }
+}
+
+const expectedPrefixedKeyPathMirroredObject = {
+  a: 'foobar:a',
+  b: {
+    c: 'foobar:b.c',
+    d: {
+      e: 'foobar:b.d.e'
+    }
+  }
+}
+
+console.assert(
+  JSON.stringify(keyPathMirror(nestedObject, prefix)) ===
+  JSON.stringify(expectedPrefixedKeyPathMirroredObject)
+) // no errors :)
 ```
 
 ## § Alternatives

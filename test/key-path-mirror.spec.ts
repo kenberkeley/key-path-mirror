@@ -1,7 +1,7 @@
 import { keyPathMirror } from '../src/key-path-mirror'
 
 describe(keyPathMirror.name, () => {
-  it('should throw if the argument is not an object', () => {
+  it('should throw if the first argument is not an object', () => {
     ;[
       undefined,
       null,
@@ -19,11 +19,11 @@ describe(keyPathMirror.name, () => {
           // @ts-ignore
           o
         )
-      }).toThrow('Argument must be an object')
+      }).toThrow('1st argument should be an object')
     })
   })
 
-  it('should return key path mirrored object', () => {
+  it('should return a key-path-mirrored object', () => {
     expect({}).toEqual({})
 
     expect(
@@ -78,6 +78,42 @@ describe(keyPathMirror.name, () => {
         k: 'f.k'
       },
       l: 'l'
+    })
+  })
+
+  it('should return a prefixed key-path-mirrored object', () => {
+    const prefix = 'foobar:'
+    expect(
+      keyPathMirror(
+        {
+          a: 1,
+          b: null,
+          c: {
+            d: NaN,
+            e: new Date(),
+            f: {
+              g: new RegExp(''),
+              h: {
+                i: () => {}
+              }
+            }
+          }
+        },
+        prefix
+      )
+    ).toEqual({
+      a: `${prefix}a`,
+      b: `${prefix}b`,
+      c: {
+        d: `${prefix}c.d`,
+        e: `${prefix}c.e`,
+        f: {
+          g: `${prefix}c.f.g`,
+          h: {
+            i: `${prefix}c.f.h.i`
+          }
+        }
+      }
     })
   })
 })

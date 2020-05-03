@@ -8,18 +8,18 @@ export default keyPathMirror
 export function keyPathMirror<
   T extends Obj,
   R extends RecursiveSetObjValTypeAsStr<T>
-> (obj: T, prefixPath?: string): R {
+> (obj: T, prefix?: string): R {
   if (!isObject(obj)) {
-    throw new Error('Argument must be an object')
+    throw new Error('1st argument should be an object')
   }
 
   const keyPathMirroredObj: Obj = {}
   Object.keys(obj).forEach(key => {
-    const curPath = prefixPath ? `${prefixPath}.${key}` : key
+    const curPath = prefix ? `${prefix}${key}` : key
 
     const val = obj[key]
     keyPathMirroredObj[key] = isObject(val)
-      ? keyPathMirror(val as Obj, curPath)
+      ? keyPathMirror(val as Obj, `${curPath}.`)
       : curPath
   })
   return keyPathMirroredObj as R
