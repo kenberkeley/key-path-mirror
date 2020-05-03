@@ -17,6 +17,14 @@
     "build": "tsc",
     "prepublishOnly": "npm run lint && npm run check-types && npm run test && npm run build"
   },
+  "lint-staged": {
+    "*": "prettier-standard --format"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kenberkeley/key-path-mirror.git"
@@ -35,7 +43,9 @@
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "del-cli": "^3.0.0",
+    "husky": "^4.2.5",
     "jest": "^25.5.3",
+    "lint-staged": "^10.2.2",
     "prettier-standard": "^16.3.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
