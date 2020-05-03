@@ -21,8 +21,6 @@ $ yarn add key-path-mirror
 ## § Usage
 
 ```ts
-import keyPathMirror from 'key-path-mirror'
-// Or
 import { keyPathMirror } from 'key-path-mirror'
 
 keyPathMirror(obj: object, prefix?: string)
@@ -109,5 +107,8 @@ console.assert(
 
 ## § Alternatives
 
+* https://github.com/tkqubo/deep-key-mirror
 * https://github.com/apolkingg8/KeyMirrorNested
 * https://github.com/werk85/pathmirror
+* https://github.com/venkyjs/KeyMirrorPlus
+* https://github.com/filenwind/keymirror-nested
